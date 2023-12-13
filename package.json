@@ -1,0 +1,19 @@
+{
+  "name": "urlshortnerproject",
+  "version": "1.0.0",
+  "description": "- Design a Url shortner service that takes in a valid URL and \r   returns a shortened URL , redirecting the user to the previously provided URL .",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^8.0.3",
+    "nodemon": "^3.0.2",
+    "short-unique-id": "^5.0.3",
+    "valid-url": "^1.0.9"
+  }
+}
