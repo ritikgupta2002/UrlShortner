@@ -5,6 +5,6 @@ const {HandleGenerateShortUrl,HandleRedirectUrl, HandleGetAnalytics}=require("..
 
 router.post('/shortId',HandleGenerateShortUrl);
 router.get('/:shortId',HandleRedirectUrl);
-router.get('/url/anaytics/:shortId',HandleGetAnalytics);
+router.get('/anaytics/:shortId',HandleGetAnalytics)
 
 module.exports=router;
