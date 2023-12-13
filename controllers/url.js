@@ -13,24 +13,31 @@ async function HandleGenerateShortUrl(req, res) {
   await URL.create({
     shortId: shortId,
     redirectUrl: req.body.url,
-    clickCount:0,// clickCount:
-    visitHistory:[],
+    clickCount: 0, // clickCount:
+    visitHistory: [],
   });
   return res.json({ id: shortId });
 }
 
 async function HandleRedirectUrl(req, res) {
-    const url=await URL.findOne({shortId:req.params.shortId});
-    url.clickCount++;
-    url.visitHistory.push(Date.now());
-    console.log("redirecting. and updating the count ....");
-    await url.save();
-    res.redirect(url.redirectUrl);
+  const url = await URL.findOne({ shortId: req.params.shortId });
+  url.clickCount++;
+  url.visitHistory.push(Date.now());
+  console.log("redirecting. and updating the count ....");
+  await url.save();
+  res.redirect(url.redirectUrl);
 }
 
-
+async function HandleGetAnalytics(req, res) {
+  const url = await URL.findOne({ shortId: req.params.shortId });
+  return res.json({
+    clickCount: url.clickCount,
+    visitHistory: url.visitHistory,
+  });
+}
 
 module.exports = {
   HandleGenerateShortUrl,
   HandleRedirectUrl,
+  HandleGetAnalytics,
 };
