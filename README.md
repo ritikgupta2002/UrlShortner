@@ -11,13 +11,13 @@
     - GET/URL/analytics/:id - Returns the clicks for the provided short id
 
 
-![1 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner.png)
+<img width="960" alt="url shortner" src="https://github.com/ritikgupta2002/UrlShortner/assets/99651822/dd7592c3-4680-417f-99b1-27b787afdd82">
 
 
-![2 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner1.png)
+<img width="955" alt="url shortner1" src="https://github.com/ritikgupta2002/UrlShortner/assets/99651822/75e7d220-df3c-4abc-9cc0-059a8be0d6a0">
 
 
-![3 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner%202.png)
+<img width="952" alt="url shortner 2" src="https://github.com/ritikgupta2002/UrlShortner/assets/99651822/79c1a5ec-33cf-4a91-901b-3f1f100ea6b4">
 
 
-![4 th image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner%203.png)
+<img width="950" alt="url shortner 3" src="https://github.com/ritikgupta2002/UrlShortner/assets/99651822/1ce26c97-2d78-4a62-aab1-fc3409501787">
