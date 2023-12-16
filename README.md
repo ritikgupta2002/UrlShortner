@@ -10,3 +10,14 @@
 
     - GET/URL/analytics/:id - Returns the clicks for the provided short id
 
+
+![1 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner.png)
+
+
+![2 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner1.png)
+
+
+![3 st image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner%202.png)
+
+
+![4 th image ](https://github.com/ritikgupta2002/UrlShortner/blob/main/url%20shortner%203.png)
