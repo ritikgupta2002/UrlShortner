@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const validUrl=require("valid-url");
+const validUrl = require("valid-url");
+const User = require("./user");
 
 const urlSchema = new mongoose.Schema(
   {
@@ -12,18 +13,25 @@ const urlSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    clickCount:{
-        type:Number,
-        default:0
+    clickCount: {
+      type: Number,
+      default: 0,
     },
 
-    visitHistory:[{
-      type:Number
-    }]
+    visitHistory: [
+      {
+        type: Number,
+      },
+    ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users'
+    },
   },
+
   { timestamps: true }
 );
 
-const URL=mongoose.model('url',urlSchema);  
+const URL = mongoose.model("url", urlSchema);
 
-module.exports=URL;
+module.exports = URL;

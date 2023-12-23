@@ -14,7 +14,8 @@ async function restrictToLoggedinUserOnly(req, res, next) {
     console.log("no user with the uid");
     return res.redirect("/login");
   }
-  req.user=user;
+  req.user=user;//jaise hi login kiya user ko header me daal dia taki uss login session me user kaa jaroorat padhe to user kr lenge
+  
   next();
 }
 
