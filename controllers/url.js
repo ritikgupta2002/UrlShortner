@@ -16,13 +16,14 @@ async function HandleGenerateShortUrl(req, res) {
     clickCount: 0, // clickCount:
     visitHistory: [],
   });
-  return res.render('home',{id:shortId});
+  const allUrls = await URL.find({});
+  return res.render("home", { id: shortId,urls:allUrls});
   // return res.json({ id: shortId });
 }
 
 async function HandleRedirectUrl(req, res) {
   console.log(req.params);
-  const url = await URL.findOne({ shortId: req.params.shortId});
+  const url = await URL.findOne({ shortId: req.params.shortId });
   url.clickCount++;
   url.visitHistory.push(Date.now());
   console.log("redirecting. and updating the count ....");

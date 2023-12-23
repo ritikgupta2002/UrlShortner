@@ -4,8 +4,9 @@ const URL = require("../models/url");
 const User = require("../models/user.js");
 
 router.get("/", async (req, res) => {
-  const allUrls = await URL.find({});
-  return res.render("home", { urls: allUrls });
+  // const allUrls = await URL.find({});
+  // return res.render("home", { urls: allUrls });
+  return res.render("home");
 });
 
 router.get("/signup", (req, res) => {

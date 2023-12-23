@@ -133,36 +133,41 @@
       <button type="submit">Generate Short URL</button>
     </form>
   </div>
-  <div class="container">
-    <% if (locals.id) { %>
-      <p>
-        URL Generated:
-        <a href="http://localhost:8004/url/<%=id%>" target="_blank">
-          http://localhost:8004/url/<%=id%></a>
-      </p>
-    <% } %>
-    <div class="table-container">
-      <% if (locals.urls) { %>
-        <table>
-          <thead>
-            <th>S.No</th>
-            <th>Short ID</th>
-            <th>Redirect</th>
-            <th>Clicks</th>
-          </thead>
-          <tbody>
-            <% urls.forEach((url, index) => { %>
-              <tr>
-                <td><%= index + 1 %></td>
-                <td><%= url.shortId %></td>
-                <td><%= url.redirectUrl %></td>
-                <td><%= url.clickCount %></td>
-              </tr>
-            <% }) %>
-          </tbody>
-        </table>
+
+  <% if (locals.id || (locals.urls && locals.urls.length > 0)) { %>
+    <div class="container">
+      <% if (locals.id) { %>
+        <p>
+          URL Generated:
+          <a href="http://localhost:8004/url/<%=id%>" target="_blank">
+            http://localhost:8004/url/<%=id%></a>
+        </p>
+      <% } %>
+
+      <% if (locals.urls && locals.urls.length > 0) { %>
+        <div class="table-container">
+          <table>
+            <thead>
+              <th>S.No</th>
+              <th>Short ID</th>
+              <th>Redirect</th>
+              <th>Clicks</th>
+            </thead>
+            <tbody>
+              <% locals.urls.forEach((url, index) => { %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= url.shortId %></td>
+                  <td><%= url.redirectUrl %></td>
+                  <td><%= url.clickCount %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
       <% } %>
     </div>
-  </div>
+  <% } %>
+
 </body>
 </html>
