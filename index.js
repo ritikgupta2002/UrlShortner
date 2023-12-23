@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.use("/url", restrictToLoggedinUserOnly,UrlRouter);
 app.use("/user", UserRouter);
-app.use("/", StaticRouter);
+app.use("/",StaticRouter);
 
 app.listen(8004, () => {
   console.log("Server started on PORT 8004");

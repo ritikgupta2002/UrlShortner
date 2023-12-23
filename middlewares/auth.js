@@ -15,7 +15,7 @@ async function restrictToLoggedinUserOnly(req, res, next) {
     return res.redirect("/login");
   }
   req.user=user;//jaise hi login kiya user ko header me daal dia taki uss login session me user kaa jaroorat padhe to user kr lenge
-  
+
   next();
 }
 
