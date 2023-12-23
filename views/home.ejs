@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>URL Shortener</title>
   <style>
     body {
-      font-family: 'Verdana', 'Geneva', 'Tahoma', sans-serif;
-      background-color: #f4f4f4;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #f2f2f2;
+      color: #333;
       margin: 0;
       padding: 0;
       display: flex;
@@ -18,59 +19,34 @@
     }
 
     h1 {
-      color: #333;
+      color: #007acc;
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    form {
-      margin: 20px auto;
-      text-align: center;
-      width: 80%; /* Adjust the width as needed */
-    }
-
-    label {
-      display: block;
-      margin-bottom: 8px;
-    }
-
-    input {
-      width: 100%; /* Make the input full width */
-      padding: 8px;
-      box-sizing: border-box;
-      margin-bottom: 12px; /* Add some space between the input and button */
-    }
-
-    button {
-      padding: 8px 16px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
-    }
-
-    .url-container {
-      max-height: 70vh;
-      overflow-y: auto;
+    .container {
       width: 80%;
-      margin: auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      overflow: hidden;
     }
 
     .table-container {
-      position: relative;
-      overflow-x: auto;
+      max-height: 70vh;
+      overflow-y: auto;
+      margin-top: 20px;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-top: 20px;
-      border-top: 2px solid #007bff;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       background-color: #fff;
+      border-radius: 8px;
+      color: #333;
     }
 
     th, td {
@@ -78,14 +54,16 @@
       border: 1px solid #ddd;
       text-align: left;
       white-space: nowrap;
+      font-size: 14px;
     }
 
     th {
-      background-color: #007bff;
+      background-color: #007acc;
       color: #fff;
       position: sticky;
       top: 0;
       z-index: 2;
+      border-radius: 8px 8px 0 0;
     }
 
     tr {
@@ -95,31 +73,80 @@
     tr:hover {
       background-color: #f0f0f0;
     }
+
+    form {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #007acc;
+      font-size: 16px;
+    }
+
+    input {
+      width: calc(100% - 16px);
+      padding: 10px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    button {
+      padding: 12px 24px;
+      background-color: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #005d8e;
+      transform: scale(1.05);
+    }
+
+    a {
+      color: #007acc;
+      text-decoration: none;
+      transition: text-decoration 0.2s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <h1>URL Shortener</h1>
-  <% if (locals.id) { %>
-    <p>
-      URL Generated:
-      <a href="http://localhost:8004/url/<%=id%>" target="_blank">
-        http://localhost:8004/url/<%=id%></a>
-    </p>
-  <% } %>
-  <div>
+  <div class="container">
     <form method="POST" action="/url">
-      <label> Enter your Original URL</label>
-      <input type="text" name="url" placeholder="http://www.example.com" />
-      <button type="submit">Generate</button>
+      <label for="url">Enter your Original URL</label>
+      <input type="url" id="url" name="url" placeholder="http://www.example.com" required>
+      <button type="submit">Generate Short URL</button>
     </form>
   </div>
-  <div class="url-container">
+  <div class="container">
+    <% if (locals.id) { %>
+      <p>
+        URL Generated:
+        <a href="http://localhost:8004/url/<%=id%>" target="_blank">
+          http://localhost:8004/url/<%=id%></a>
+      </p>
+    <% } %>
     <div class="table-container">
       <% if (locals.urls) { %>
         <table>
           <thead>
-            <th>S.NO</th>
-            <th>ShortID</th>
+            <th>S.No</th>
+            <th>Short ID</th>
             <th>Redirect</th>
             <th>Clicks</th>
           </thead>
