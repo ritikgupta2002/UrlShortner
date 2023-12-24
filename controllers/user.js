@@ -1,6 +1,9 @@
 const User = require("../models/user.js");
 const { v4: uuidv4 } = require("uuid");
-const { setuser, getuser } = require("../services/auth.js");
+const {
+  setuser,
+  setuserJWT,
+} = require("../services/auth.js");
 
 async function HandleUsersignup(req, res) {
   const { name, email, password } = req.body;
@@ -19,16 +22,32 @@ async function HandleUserlogin(req, res) {
   if (!user) {
     return res.render("login", { error: "invalid username or password " });
   }
-  const sessionId = uuidv4();
-  setuser(sessionId, user);
+  const sessionId = uuidv4(); //basic auth
+  setuser(sessionId, user); //basic auth
   res.cookie("uid", sessionId, {
-    httpOnly: true
+    httpOnly: true,
   });
   console.log("cookie value in user.js login function", sessionId);
   return res.redirect("/");
-  // console.log("cookie value in user.js login function", sessionId);
+}
+
+async function HandleUserloginJWT(req, res) {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email, password });
+  // console.log("User", user);
+  if (!user) {
+    return res.render("login", { error: "invalid username or password " });
+  }
+  const token = await setuserJWT(user); //jwt auth
+  res.cookie("uid1", token, {
+    httpOnly: true,
+  });
+  //set the cookie value to token if jwt auth , otherwise for basic auth set it to session id
+  console.log("cookie value in user.js login function", token);
+  return res.redirect("/");
 }
 module.exports = {
   HandleUsersignup,
   HandleUserlogin,
+  HandleUserloginJWT
 };

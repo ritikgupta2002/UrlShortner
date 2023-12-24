@@ -13,8 +13,12 @@ router.get("/signup", (req, res) => {
   return res.render("signup");
 });
 
-router.get("/login",(req,res)=>{
+router.get("/login", (req, res) => {
   return res.render("login");
-})
+});
+
+router.get("/signin", (req, res) => {
+  return res.render("login");
+});
 
 module.exports = router;

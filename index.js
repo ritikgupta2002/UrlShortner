@@ -1,7 +1,7 @@
 const express = require("express");
 const { connectMongodb } = require("./connection.js");
 const cookieParser=require('cookie-parser');  
-const{restrictToLoggedinUserOnly}=require("./middlewares/auth.js");
+const{restrictToLoggedinUserOnly,restrictToLoggedinUserOnlyJWT}=require("./middlewares/auth.js");
 const URL = require("./models/url.js");
 
 const UrlRouter = require("./routes/url.js");
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/url", restrictToLoggedinUserOnly,UrlRouter);
+app.use("/url", restrictToLoggedinUserOnlyJWT,UrlRouter);
 app.use("/user", UserRouter);
 app.use("/",StaticRouter);
 
