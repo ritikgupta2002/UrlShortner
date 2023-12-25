@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use("/url", restrictToLoggedinUserOnlyJWT,UrlRouter);
+app.use("/url", restrictToLoggedinUserOnly,UrlRouter);
 app.use("/user", UserRouter);
 app.use("/",StaticRouter);
 

@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const validUrl = require("valid-url");
-const User = require("./user");
 
 const urlSchema = new mongoose.Schema(
   {
