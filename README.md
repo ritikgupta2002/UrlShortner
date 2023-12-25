@@ -9,6 +9,11 @@
 
 - Keep track of total visits/clicks on the URL for a particular user 
 
+- Implemented peristent session storage for authenticating user 
+ 
+- Implemented jwt auth also just that if you want to use that for authenticating , change the middleware , update the login.ejs file 
+
+
 - Routes
     - POST/URL - generates a new short URL and returns the shortened URL in the format example.com/random-id.
     
