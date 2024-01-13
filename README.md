@@ -1,26 +1,67 @@
-- Design a Url shortner service that takes in a valid URL and 
-  returns a shortened URL , redirecting the user to the previously provided URL .
+- Controllers:
 
-- new user sign up functionality 
+    url.js: Handles URL shortening, redirection, and analytics.
+    user.js: Manages user signup and login logic, supporting both basic and JWT authentication.
+    Middleware:
+    auth.js: Implements middleware for restricting routes to logged-in users, supporting both basic and JWT authentication.
 
-- Authenticate a user with username and password 
+- Models:
 
-- keep track of urls visited by a particular user 
-
-- Keep track of total visits/clicks on the URL for a particular user 
-
-- Implemented peristent session storage for authenticating user 
- 
-- Implemented jwt auth also just that if you want to use that for authenticating , change the middleware , update the login.ejs file 
-
-
-- Routes
-    - POST/URL - generates a new short URL and returns the shortened URL in the format example.com/random-id.
+    session.js: Defines a MongoDB model for user sessions.
+    url.js: Represents URL entities with shortId, redirectUrl, clickCount, visitHistory, and createdBy fields.
+    user.js: Defines a user model with name, email, and password fields.
     
-    - GET/:id  - Redirects the user to the original URL 
+- Routes:
 
-    - GET/URL/analytics/:id - Returns the clicks for the provided short id
+    url.js: Handles URL-related routes such as shortening, redirection, and analytics.
+    user.js: Manages user-related routes including signup and login.
+    staticRouter.js: Contains basic routes like home, signup, login.
 
+- Services:
+  
+  auth.js: Provides functions for managing user sessions and JWT authentication.
+
+- Connection:
+
+  connection.js: Connects to the MongoDB database.
+  
+Key Features
+
+- URL Shortening:
+
+    Generates a unique shortId for each URL and stores it in the database.
+    Tracks click count and visit history for each shortened URL.
+    
+- User Authentication:
+
+    Supports both basic authentication (session-based) and JWT authentication.
+    Secure user signup and login functionality.
+
+- Middleware:
+
+    Implements middleware for restricting routes to logged-in users, supporting both basic and JWT authentication.
+
+- Database Models:
+
+    Uses Mongoose to define models for user sessions, URLs, and user data.
+
+- Express Configuration:
+
+    Sets up Express with EJS as the view engine, JSON and URL-encoded data parsing, and cookie handling.
+    
+- Server Initialization:
+
+    Connects to MongoDB and starts the server on port 8004.
+
+
+- How to Run
+
+Ensure MongoDB is running locally on port 27017.
+Install dependencies: npm install
+Start the server: npm start
+Visit http://localhost:8004 to access the URL shortener service.
+
+Feel free to explore the provided routes, controllers, and services for a deeper understanding of the implementation.
 
 ![Screenshot (52)](https://github.com/ritikgupta2002/UrlShortner/assets/99651822/614e1b42-1309-4854-8f27-caa752b36bf0)
 
