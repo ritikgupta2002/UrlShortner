@@ -1,29 +1,31 @@
 - Controllers:
 
-    url.js: Handles URL shortening, redirection, and analytics.
-    user.js: Manages user signup and login logic, supporting both basic and JWT authentication.
-    Middleware:
-    auth.js: Implements middleware for restricting routes to logged-in users, supporting both basic and JWT authentication.
+    - url.js: Handles URL shortening, redirection, and analytics.
+    - user.js: Manages user signup and login logic, supporting both basic and JWT authentication.
+
+- Middleware:
+
+    - auth.js: Implements middleware for restricting routes to logged-in users, supporting both basic and   JWT authentication.
 
 - Models:
 
-    session.js: Defines a MongoDB model for user sessions.
-    url.js: Represents URL entities with shortId, redirectUrl, clickCount, visitHistory, and createdBy fields.
-    user.js: Defines a user model with name, email, and password fields.
+    - session.js: Defines a MongoDB model for user sessions.
+    - url.js: Represents URL entities with shortId, redirectUrl, clickCount, visitHistory, and createdBy fields.
+    - user.js: Defines a user model with name, email, and password fields.
     
 - Routes:
 
-    url.js: Handles URL-related routes such as shortening, redirection, and analytics.
-    user.js: Manages user-related routes including signup and login.
-    staticRouter.js: Contains basic routes like home, signup, login.
+    - url.js: Handles URL-related routes such as shortening, redirection, and analytics.
+    - user.js: Manages user-related routes including signup and login.
+    - staticRouter.js: Contains basic routes like home, signup, login.
 
 - Services:
   
-  auth.js: Provides functions for managing user sessions and JWT authentication.
+    - auth.js: Provides functions for managing user sessions and JWT authentication.
 
 - Connection:
 
-  connection.js: Connects to the MongoDB database.
+    - connection.js: Connects to the MongoDB database.
   
 Key Features
 
